@@ -1,7 +1,13 @@
 import React from 'react';
 
+import DatePickers from './DatePickers';
+
 const App = () => {
-  return <div>app</div>;
+  return (
+    <div>
+      <DatePickers />
+    </div>
+  );
 };
 
 export default App;

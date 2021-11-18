@@ -2,14 +2,18 @@ import React, { useState } from 'react';
 
 import { getData } from '../services/bitcoinDataService';
 
-const DatePickers = () => {
+const DatePickers = ({ setBitcoinData }) => {
   const [startDate, setStartDate] = useState('');
   const [endDate, setEndDate] = useState('');
 
-  const onFormSubmit = (event) => {
+  const onFormSubmit = async (event) => {
     event.preventDefault();
-    getData();
+    const bitcoinData = await getData();
+    setBitcoinData(bitcoinData);
   };
+
+  // always add 1h to end
+
   return (
     <form onSubmit={onFormSubmit}>
       <input

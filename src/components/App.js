@@ -1,11 +1,21 @@
-import React from 'react';
+import React, { useState } from 'react';
 
 import DatePickers from './DatePickers';
+import DisplayAnalysis from './DisplayAnalysis';
 
 const App = () => {
+  const [bitcoinData, setBitcoinData] = useState([]);
+
+  console.log(bitcoinData, 'data');
+
+  const containerStyles = {
+    margin: 'auto',
+    width: '50%',
+  };
   return (
-    <div>
-      <DatePickers />
+    <div style={containerStyles}>
+      <DatePickers setBitcoinData={setBitcoinData} />
+      <DisplayAnalysis bitcoinData={bitcoinData} />
     </div>
   );
 };

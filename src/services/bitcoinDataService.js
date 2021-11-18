@@ -4,6 +4,8 @@ const url =
 export const getData = async () => {
   const response = await fetch(url);
   const data = await response.json();
-  console.log(data);
+  console.log(data, 'get data');
   return data;
 };
+
+// handle err?

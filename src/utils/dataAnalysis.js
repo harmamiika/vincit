@@ -5,7 +5,6 @@ export const regularizeDates = (data) => {
     return;
   }
   return data.map((datapoint) => {
-    console.log(datapoint, 'point');
     datapoint[0] = makeRegularDate(datapoint[0]);
     return datapoint;
   });
@@ -22,6 +21,8 @@ export const calculateLongestDownwardTrend = (dataArray) => {
   let datapoint = 1;
   let longestCount = 0;
   let currentCount = 0;
+
+  // replace with for loop?
   while (dataArray[datapoint]) {
     if (dataArray[datapoint][1] < dataArray[datapoint - 1][1]) {
       currentCount++;
@@ -35,4 +36,19 @@ export const calculateLongestDownwardTrend = (dataArray) => {
   return longestCount;
 };
 
-// iterate, while growing add +, if down - save result and compare to highest
+export const calculateHighestTotalVolume = (dataArray) => {
+  console.log(dataArray);
+  if (!dataArray) {
+    return;
+  }
+
+  return dataArray.reduce(
+    (highestValue, currentDatapoint) => {
+      return (highestValue =
+        currentDatapoint[1] > highestValue[1]
+          ? currentDatapoint
+          : highestValue);
+    },
+    [null, 0]
+  );
+};

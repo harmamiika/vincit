@@ -4,7 +4,7 @@ import DatePickers from './DatePickers';
 import DisplayAnalysis from './DisplayAnalysis';
 
 const App = () => {
-  const [bitcoinData, setBitcoinData] = useState([]);
+  const [bitcoinData, setBitcoinData] = useState({});
 
   console.log(bitcoinData, 'data');
 

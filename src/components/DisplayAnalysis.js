@@ -1,5 +1,7 @@
 import React from 'react';
 import {
+  calculateBestBuyAndSellDates,
+  calculateBestDatesToBuyAndSell,
   calculateHighestTotalVolume,
   calculateLongestDownwardTrend,
   regularizeDates,
@@ -23,6 +25,10 @@ const DisplayAnalysis = ({ bitcoinData }) => {
       bitcoinData.total_volumes
     );
 
+    const bestBuyAndSellDates = calculateBestBuyAndSellDates(
+      bitcoinData.prices
+    );
+
     console.log(highestTradingVolume[1], 'highest volume is this');
     return (
       <div>
@@ -35,8 +41,20 @@ const DisplayAnalysis = ({ bitcoinData }) => {
         <p>
           The date with the highest trading volume is{' '}
           {makeRegularDate(highestTradingVolume[0])} with the volume of{' '}
-          {highestTradingVolume[1]}.
+          {highestTradingVolume[1]}€.
         </p>
+        <h2>Best buy and sell dates</h2>
+        {bestBuyAndSellDates ? (
+          <p>
+            The best date to buy is{' '}
+            {makeRegularDate(bestBuyAndSellDates.buyDateDatapoint[0])}
+          </p>
+        ) : (
+          <p>
+            Price only goes down in the selected range. Do not buy or sell
+            bitcoin.
+          </p>
+        )}
       </div>
     );
   };

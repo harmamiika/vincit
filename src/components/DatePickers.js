@@ -3,12 +3,13 @@ import React, { useState } from 'react';
 import { getData } from '../services/bitcoinDataService';
 
 const DatePickers = ({ setBitcoinData }) => {
-  const [startDate, setStartDate] = useState('');
-  const [endDate, setEndDate] = useState('');
+  const [startDate, setStartDate] = useState('2021-01-01');
+  const [endDate, setEndDate] = useState('2021-02-01');
 
   const onFormSubmit = async (event) => {
     event.preventDefault();
-    const bitcoinData = await getData();
+    console.log(startDate, endDate, 'dates');
+    const bitcoinData = await getData(startDate, endDate);
     setBitcoinData(bitcoinData);
   };
 

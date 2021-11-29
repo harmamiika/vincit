@@ -52,3 +52,72 @@ export const calculateHighestTotalVolume = (dataArray) => {
     [null, 0]
   );
 };
+
+export const calculateBestBuyAndSellDates = (dataArray) => {
+  console.log(dataArray, 'data addsa');
+  if (!dataArray) {
+    return;
+  }
+
+  let maxDifference = dataArray[1][1] - dataArray[0][1];
+  let maxElement = dataArray[0];
+  let minElement = dataArray[0];
+  let maxDifferenceMinElement = dataArray[0];
+
+  for (let i = 0; i < dataArray.length; i++) {
+    if (dataArray[i][1] - minElement[1] > maxDifference) {
+      maxDifference = dataArray[i][1] - minElement[1];
+      maxElement = dataArray[i];
+      maxDifferenceMinElement = minElement;
+    }
+    if (dataArray[i][1] < minElement) {
+      minElement = dataArray[i];
+    }
+  }
+
+  console.log(
+    {
+      buyDate: maxDifferenceMinElement,
+      sellDate: maxElement,
+      maxDifference,
+    },
+    'adsds'
+  );
+
+  // if price only gets lower
+  if (maxDifference <= 0) {
+    return null;
+  }
+
+  return {
+    buyDateDatapoint: maxDifferenceMinElement,
+    sellDateDatapoint: maxElement,
+    maxDifference,
+  };
+};
+
+// this is while looped to record the maximum increase
+
+// export const calculateBestBuyAndSellDates = (dataArray) => {
+
+//   let lowestPriceDate = dataArray[0];
+//   let highestPriceDate = dataArray[0];
+//   let highestDifference = 0;
+
+//   for (let datapoint of dataArray) {
+//     if (datapoint[1] <= lowestPriceDate[1]) {
+//       lowestPriceDate = dataPoint
+//     }
+//     if (datapoint[1] > highestPriceDate[1]) {
+//       highestPriceDate = dataPoint
+
+//     }
+
+//   }
+
+//   return;
+// };
+
+// const calculatePriceDiff = (lowest, highest) => {
+//   highest - lowest > highestDifference ?
+// }

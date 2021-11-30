@@ -8,12 +8,15 @@ const DatePickers = ({ setBitcoinData }) => {
 
   const onFormSubmit = async (event) => {
     event.preventDefault();
-    console.log(startDate, endDate, 'dates');
+
+    if (!startDate || !endDate || startDate === endDate) {
+      console.log('invalid input');
+      return;
+    }
+
     const bitcoinData = await getData(startDate, endDate);
     setBitcoinData(bitcoinData);
   };
-
-  // always add 1h to end
 
   return (
     <form onSubmit={onFormSubmit}>

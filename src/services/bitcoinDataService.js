@@ -1,11 +1,12 @@
-const url =
-  'https://api.coingecko.com/api/v3/coins/bitcoin/market_chart/range?vs_currency=eur&from=1577836800&to=1609376400';
+import { makeUnixDate } from '../utils/dateUtils';
 
+// no error handling
 export const getData = async (startDate, endDate) => {
-  const response = await fetch(url);
-  const data = await response.json();
-  console.log(data, 'get data');
-  return data;
-};
+  const url = `https://api.coingecko.com/api/v3/coins/bitcoin/market_chart/range?vs_currency=eur&from=${makeUnixDate(
+    startDate
+  )}&to=${makeUnixDate(endDate)}`;
 
-// handle err?
+  const response = await fetch(url);
+
+  return await response.json();
+};

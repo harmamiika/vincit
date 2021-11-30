@@ -1,28 +1,12 @@
-import { makeRegularDate } from './dateUtils';
-
-export const regularizeDates = (data) => {
-  if (!data) {
-    return;
-  }
-  return data.map((datapoint) => {
-    datapoint[0] = makeRegularDate(datapoint[0]);
-    return datapoint;
-  });
-};
-
-// has no checks if the date changes, relies on api sending an array with one datapoint per day
-
 export const calculateLongestDownwardTrend = (dataArray) => {
   if (!dataArray) {
     return;
   }
-  // fix check
 
   let datapoint = 1;
   let longestCount = 0;
   let currentCount = 0;
 
-  // replace with for loop?
   while (dataArray[datapoint]) {
     if (dataArray[datapoint][1] < dataArray[datapoint - 1][1]) {
       currentCount++;
@@ -37,7 +21,6 @@ export const calculateLongestDownwardTrend = (dataArray) => {
 };
 
 export const calculateHighestTotalVolume = (dataArray) => {
-  console.log(dataArray);
   if (!dataArray) {
     return;
   }
@@ -54,7 +37,6 @@ export const calculateHighestTotalVolume = (dataArray) => {
 };
 
 export const calculateBestBuyAndSellDates = (dataArray) => {
-  console.log(dataArray, 'data addsa');
   if (!dataArray) {
     return;
   }
@@ -75,15 +57,6 @@ export const calculateBestBuyAndSellDates = (dataArray) => {
     }
   }
 
-  console.log(
-    {
-      buyDate: maxDifferenceMinElement,
-      sellDate: maxElement,
-      maxDifference,
-    },
-    'adsds'
-  );
-
   // if price only gets lower
   if (maxDifference <= 0) {
     return null;
@@ -92,32 +65,19 @@ export const calculateBestBuyAndSellDates = (dataArray) => {
   return {
     buyDateDatapoint: maxDifferenceMinElement,
     sellDateDatapoint: maxElement,
-    maxDifference,
+    profit: maxDifference,
   };
 };
+// has no checks if the date changes, relies on api sending an array with one datapoint per day
 
-// this is while looped to record the maximum increase
+// import { makeRegularDate } from './dateUtils';
 
-// export const calculateBestBuyAndSellDates = (dataArray) => {
-
-//   let lowestPriceDate = dataArray[0];
-//   let highestPriceDate = dataArray[0];
-//   let highestDifference = 0;
-
-//   for (let datapoint of dataArray) {
-//     if (datapoint[1] <= lowestPriceDate[1]) {
-//       lowestPriceDate = dataPoint
-//     }
-//     if (datapoint[1] > highestPriceDate[1]) {
-//       highestPriceDate = dataPoint
-
-//     }
-
+// export const regularizeDates = (data) => {
+//   if (!data) {
+//     return;
 //   }
-
-//   return;
+//   return data.map((datapoint) => {
+//     datapoint[0] = makeRegularDate(datapoint[0]);
+//     return datapoint;
+//   });
 // };
-
-// const calculatePriceDiff = (lowest, highest) => {
-//   highest - lowest > highestDifference ?
-// }

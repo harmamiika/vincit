@@ -1,7 +1,5 @@
-// transform date into unix
-
 export const makeRegularDate = (date) => {
-  const regDate = new Date(date).toLocaleString();
+  const regDate = new Date(date).toDateString();
   return regDate;
 };
 

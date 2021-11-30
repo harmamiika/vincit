@@ -1,3 +1,5 @@
+// has no checks for date changes, relies on api sending an array with one datapoint per day
+
 export const calculateLongestDownwardTrend = (dataArray) => {
   if (!dataArray) {
     return;
@@ -68,7 +70,6 @@ export const calculateBestBuyAndSellDates = (dataArray) => {
     profit: maxDifference,
   };
 };
-// has no checks if the date changes, relies on api sending an array with one datapoint per day
 
 // import { makeRegularDate } from './dateUtils';
 

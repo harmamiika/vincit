@@ -32,7 +32,7 @@ const DatePickers = ({ setBitcoinData }) => {
         type="date"
         id="end"
       />
-      <button>Get Data</button>
+      <button>Get data</button>
     </form>
   );
 };

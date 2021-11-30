@@ -32,7 +32,7 @@ const DisplayAnalysis = ({ bitcoinData }) => {
       <p>
         The date with the highest trading volume is{' '}
         {makeRegularDate(highestTradingVolume[0])} with the volume of{' '}
-        {highestTradingVolume[1]}€.
+        {highestTradingVolume[1]}.
       </p>
       <h2>Best buy and sell dates</h2>
       {bestBuyAndSellDates ? (
@@ -41,7 +41,7 @@ const DisplayAnalysis = ({ bitcoinData }) => {
           {makeRegularDate(bestBuyAndSellDates.buyDateDatapoint[0])}, and the
           best date to sell is{' '}
           {makeRegularDate(bestBuyAndSellDates.sellDateDatapoint[0])}. The
-          profit is {bestBuyAndSellDates.profit}€ per bitcoin.
+          profit is {bestBuyAndSellDates.profit} € per bitcoin.
         </p>
       ) : (
         <p>

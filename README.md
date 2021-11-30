@@ -4,7 +4,7 @@
 
 <p>Code should be clean.</p>
 
-<h2>How to use:</h2>
+<h2>How to use</h2>
 
 <p>Running <a href="https://vincit.vercel.app/">here</a>.</p>
 
